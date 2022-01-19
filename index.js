@@ -1,6 +1,14 @@
 // Import stylesheets
 import './style.css';
-import { Map, TileLayer, LayerGroup, Marker, Icon } from 'leaflet';
+import {
+  Map,
+  TileLayer,
+  LayerGroup,
+  Marker,
+  Icon,
+  Popup,
+  Title,
+} from 'leaflet';
 // Write Javascript code!
 const map = new Map('map');
 
@@ -52,7 +60,21 @@ const marker = new Marker([30.29726893943521, 120.06622904484556], {
     iconUrl: 'data:image/svg+xml,' + encodeURIComponent(svg),
     iconSize: [40, 60],
     iconAnchor: [20, 40],
+    popupAnchor: [30.29726893943521, 120.06622904484556],
+    tooltipAnchor: [30.29726893943521, 120.06622904484556],
   }),
+  opacity: 0.8, //透明度
+  draggable: true, //图标是否可以拖拽
+  autoPan: true,
+  // title: new Title({
+  //   '数智交院',
+  // }),
+});
+// marker.bindPopup(popupContent).openPopup();
+
+const popup = new Popup({
+  maxWidth: 300,
+  maxHeight: 500,
 });
 
 marker.addTo(map); //这句别忘记
